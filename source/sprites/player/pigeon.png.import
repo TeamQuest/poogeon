@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pigeon.png-5c968620faf2d03c27d81938dcb2ba80.stex"
+path="res://.import/pigeon.png-5ff68da1f3f6d3167f88d9a2e58f3e64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/pigeon.png"
-dest_files=[ "res://.import/pigeon.png-5c968620faf2d03c27d81938dcb2ba80.stex" ]
+source_file="res://source/sprites/player/pigeon.png"
+dest_files=[ "res://.import/pigeon.png-5ff68da1f3f6d3167f88d9a2e58f3e64.stex" ]
 
 [params]
 
