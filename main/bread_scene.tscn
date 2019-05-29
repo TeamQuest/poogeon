@@ -4,7 +4,7 @@
 [ext_resource path="res://source/sprites/bread/bread_1.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 32.1657
+radius = 65.0365
 height = 4.86424
 
 [node name="Node2D" type="Node2D"]

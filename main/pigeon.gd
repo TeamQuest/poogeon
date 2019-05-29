@@ -31,8 +31,10 @@ func _physics_process(delta):
 		else:
 			kin_speed.x = lerp(kin_speed.x, 0 , .03)
 			kin_speed.y = lerp(kin_speed.y, 0 , .03)	
-		move_and_collide(kin_speed * delta)
+		var collide = move_and_collide(kin_speed * delta)
 		
+		if collide:
+			print("jeblo")
 #		if(get_position().x < pigeon_x):
 #			kin_speed.x = 0
 ##			move_and_slide(Vector2(pigeon_x, get_position().y))

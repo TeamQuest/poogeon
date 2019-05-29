@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var velocity = Vector2( 100.0, 0.0   )
+var velocity = Vector2( 100.0, 0.0 )
 
 var durability = 1
 var points  = 10

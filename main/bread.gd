@@ -14,5 +14,5 @@ func _physics_process(delta):
 	if globals.game_running == false and get_position().y > 1920:
 		get_node(".").queue_free()
 	else: 
-		velocity = velocity.normalized() * 10
+		velocity = velocity.normalized() * 20
 		
