@@ -19,7 +19,7 @@ func _process(delta):
 			get_node("menu_scene").visible = false
 			
 	else:
-		if Input.is_action_pressed("ui_cancel"):
+		if Input.is_action_pressed("ui_cancel") or globals.pigeon_life == 0:
 			globals.game_running = false
 			get_node("background_scene/ParallaxBackground/ParallaxLayer/background_sprite").visible = false
 			get_node("pigeon_scene/pigeon").visible = false

@@ -1,9 +1,6 @@
-extends RigidBody2D
+extends KinematicBody2D
 
-var velocity = Vector2( 200.0, 0.0 )
-
-var durability = 1
-var points  = 10
+var speed = Vector2(0, 300)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,5 +11,5 @@ func _physics_process(delta):
 	if globals.game_running == false and get_position().y > 1920:
 		get_node(".").queue_free()
 	else: 
-		velocity = velocity.normalized() * 20
+		move_and_collide(speed * delta)
 		

@@ -9,6 +9,9 @@ var kin_speed = Vector2(0,0)
 var pigeon_x = 100
 var pigeon_y = 50
 
+var poop = preload("res://main/poop_scene.tscn")
+var bread = preload("res://main/bread_scene.tscn")
+
 var projectResolution = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
 
 func _ready():
@@ -31,10 +34,18 @@ func _physics_process(delta):
 		else:
 			kin_speed.x = lerp(kin_speed.x, 0 , .03)
 			kin_speed.y = lerp(kin_speed.y, 0 , .03)	
-		var collide = move_and_collide(kin_speed * delta)
+		var collision = move_and_collide(kin_speed * delta)
 		
-		if collide:
-			print("jeblo")
+		if collision:
+			var collider = collision.get_collider() as KinematicBody2D
+			
+			if collider.name == "poop":
+				globals.pigeon_life -= 1
+			if collider.name == "bread":
+				globals.score += 100
+				
+			collider.queue_free()
+			
 #		if(get_position().x < pigeon_x):
 #			kin_speed.x = 0
 ##			move_and_slide(Vector2(pigeon_x, get_position().y))
