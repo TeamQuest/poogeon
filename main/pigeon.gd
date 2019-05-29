@@ -4,7 +4,6 @@ const max_speed = 700
 const acc = 20
 var kin_speed = Vector2(0,0)
 
-
 #var pigeon_x = get_node("./sprite_pigeon").get_texture().get_size().x
 #var pigeon_y = get_node("pigeon/sprite_pigeon").get_texture().get_size().y
 var pigeon_x = 100
@@ -14,10 +13,8 @@ var projectResolution = Vector2(ProjectSettings.get_setting("display/window/size
 
 func _ready():
 	set_process(true)
-#	get_node(".").move(Vector2(540, 1450))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if globals.game_running:
 		if (Input.is_action_pressed("ui_left")):
 			if kin_speed.x > -max_speed:
@@ -34,7 +31,7 @@ func _process(delta):
 		else:
 			kin_speed.x = lerp(kin_speed.x, 0 , .03)
 			kin_speed.y = lerp(kin_speed.y, 0 , .03)	
-		move_and_slide(kin_speed)
+		move_and_collide(kin_speed * delta)
 		
 #		if(get_position().x < pigeon_x):
 #			kin_speed.x = 0

@@ -1,7 +1,7 @@
 extends ParallaxBackground
 	
-var offset_loc =0
-# Called when the node enters the scene tree for the first time.
+var offset_loc = 0
+
 func _ready():
 	set_process(true)
 
