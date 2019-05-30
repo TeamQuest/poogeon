@@ -20,17 +20,29 @@ func _ready():
 func _physics_process(delta):
 	if globals.game_running:
 		if (Input.is_action_pressed("ui_left")):
-			if kin_speed.x > -max_speed:
-				kin_speed = kin_speed+ Vector2(-acc,0)
+			if(global_position.x < pigeon_x):
+				kin_speed.x = 0 
+			else :
+				if kin_speed.x > -max_speed:
+					kin_speed = kin_speed+ Vector2(-acc,0)
 		elif (Input.is_action_pressed("ui_right")):
-			if kin_speed.x < max_speed:
-				kin_speed = kin_speed+ Vector2(acc,0)
+			if(global_position.x > projectResolution.x - pigeon_x):
+				kin_speed.x = 0
+			else:
+				if kin_speed.x < max_speed:
+					kin_speed = kin_speed+ Vector2(acc,0)
 		elif (Input.is_action_pressed("ui_up")):
-			if kin_speed.y > -max_speed:
-				kin_speed = kin_speed+ Vector2(0,-acc)
+			if(global_position.y < pigeon_y):
+				kin_speed.y = 0
+			else:
+				if kin_speed.y > -max_speed:
+					kin_speed = kin_speed+ Vector2(0,-acc)
 		elif (Input.is_action_pressed("ui_down")):
-			if kin_speed.y < max_speed:
-				kin_speed = kin_speed+ Vector2(0,acc)
+			if(global_position.y > projectResolution.y - pigeon_y):
+				kin_speed.y = 0
+			else :
+				if kin_speed.y < max_speed:
+					kin_speed = kin_speed+ Vector2(0,acc)
 		else:
 			kin_speed.x = lerp(kin_speed.x, 0 , .03)
 			kin_speed.y = lerp(kin_speed.y, 0 , .03)	
@@ -38,23 +50,6 @@ func _physics_process(delta):
 		
 		is_collistion(collision)
 			
-#		if(position.x < pigeon_x):
-#			print("a")
-#			kin_speed.x = 0
-##			move_and_slide(Vector2(pigeon_x, get_position().y))
-#		if(get_position().x > projectResolution.x - pigeon_x):
-#			print("b")
-#			kin_speed.x = 0
-##			move_and_slide(Vector2(projectResolution.x - pigeon_x, get_position().y))
-#		if(get_position().y < pigeon_y):
-#			print("c")
-#			kin_speed.y = 0
-##			move_and_slide(Vector2(get_position().x, pigeon_y))
-#		if(get_position().y > projectResolution.y - pigeon_y):
-#			print("d")
-#			kin_speed.y = 0
-##			move_and_slide(Vector2(get_position().x, projectResolution.y - pigeon_y))
-	
 	else:
 		pass
 		
