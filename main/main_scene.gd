@@ -1,8 +1,8 @@
 extends Node2D
-
+	
 var poop = preload("res://main/poop_scene.tscn")
 var bread = preload("res://main/bread_scene.tscn")
-
+	
 func _ready():
 	set_process(true)
 	
@@ -20,6 +20,9 @@ func _process(delta):
 			get_node("menu_scene").visible = false
 			
 	else:
+		get_node("score_label").set_text("SCORE: " + str(globals.score))
+		get_node("lives_label").set_text("LIVES: " + str(globals.pigeon_life))
+		
 		if Input.is_action_pressed("ui_cancel") or globals.pigeon_life < 0:
 			globals.game_running = false
 			get_node("background_scene/ParallaxBackground/ParallaxLayer/background_sprite").visible = false
@@ -27,10 +30,7 @@ func _process(delta):
 			get_node("game_over_scene").visible =true
 			get_node("score_label").visible = false
 			get_node("lives_label").visible = false
-		
-		get_node("score_label").set_text("SCORE: " + str(globals.score))
-		get_node("lives_label").set_text("LIVES: " + str(globals.pigeon_life))
-		
+			
 func _on_Timer_timeout():        
 	if globals.game_running == true:
 		create_poop()
