@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://main/main_scene.gd" type="Script" id=1]
 [ext_resource path="res://main/menu_scene.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://source/fonts/RobotoMono-Bold.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 44
 font_data = ExtResource( 6 )
 
@@ -36,5 +40,15 @@ margin_right = 1031.0
 margin_bottom = 176.0
 custom_fonts/font = SubResource( 1 )
 text = "SCORE: "
+valign = 1
+
+[node name="lives_label" type="Label" parent="."]
+visible = false
+margin_left = 29.0
+margin_top = 153.0
+margin_right = 1042.0
+margin_bottom = 260.0
+custom_fonts/font = SubResource( 2 )
+text = "LIVES"
 valign = 1
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

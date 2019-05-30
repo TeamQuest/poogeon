@@ -16,21 +16,26 @@ func _process(delta):
 			get_node("pigeon_scene/pigeon").visible = true
 			get_node("background_scene").visible = true
 			get_node("score_label").visible = true
+			get_node("lives_label").visible = true
 			get_node("menu_scene").visible = false
 			
 	else:
-		if Input.is_action_pressed("ui_cancel") or globals.pigeon_life == 0:
+		if Input.is_action_pressed("ui_cancel") or globals.pigeon_life < 0:
 			globals.game_running = false
 			get_node("background_scene/ParallaxBackground/ParallaxLayer/background_sprite").visible = false
 			get_node("pigeon_scene/pigeon").visible = false
 			get_node("game_over_scene").visible =true
+			get_node("score_label").visible = false
+			get_node("lives_label").visible = false
+		
+		get_node("score_label").set_text("SCORE: " + str(globals.score))
+		get_node("lives_label").set_text("LIVES: " + str(globals.pigeon_life))
 		
 func _on_Timer_timeout():        
 	if globals.game_running == true:
 		create_poop()
 		create_bread()
 		globals.score += 10
-		get_node("score_label").set_text("SCORE: " + str(globals.score))
 	
 func create_poop():
 	var new_poop = poop.instance()
