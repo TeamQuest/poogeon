@@ -36,28 +36,35 @@ func _physics_process(delta):
 			kin_speed.y = lerp(kin_speed.y, 0 , .03)	
 		var collision = move_and_collide(kin_speed * delta)
 		
-		if collision:
-			var collider = collision.get_collider() as KinematicBody2D
+		is_collistion(collision)
 			
-			if collider.name == "poop":
-				globals.pigeon_life -= 1
-			if collider.name == "bread":
-				globals.score += 100
-				
-			collider.queue_free()
-			
-#		if(get_position().x < pigeon_x):
+#		if(position.x < pigeon_x):
+#			print("a")
 #			kin_speed.x = 0
 ##			move_and_slide(Vector2(pigeon_x, get_position().y))
 #		if(get_position().x > projectResolution.x - pigeon_x):
+#			print("b")
 #			kin_speed.x = 0
 ##			move_and_slide(Vector2(projectResolution.x - pigeon_x, get_position().y))
 #		if(get_position().y < pigeon_y):
+#			print("c")
 #			kin_speed.y = 0
 ##			move_and_slide(Vector2(get_position().x, pigeon_y))
 #		if(get_position().y > projectResolution.y - pigeon_y):
+#			print("d")
 #			kin_speed.y = 0
 ##			move_and_slide(Vector2(get_position().x, projectResolution.y - pigeon_y))
 	
 	else:
 		pass
+		
+func is_collistion(object):
+	if object:
+		var collider = object.get_collider() as KinematicBody2D
+			
+		if collider.name == "poop":
+			globals.pigeon_life -= 1
+		if collider.name == "bread":
+			globals.score += 100
+			
+		collider.queue_free()
