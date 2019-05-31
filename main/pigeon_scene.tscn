@@ -3,9 +3,8 @@
 [ext_resource path="res://main/pigeon.gd" type="Script" id=1]
 [ext_resource path="res://source/sprites/player/pigeon.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 9.63178
-height = 8.84508
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 14.0757 )
 
 [node name="Node2D" type="Node2D"]
 
