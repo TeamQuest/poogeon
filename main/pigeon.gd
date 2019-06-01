@@ -17,6 +17,13 @@ var projectResolution = Vector2(ProjectSettings.get_setting("display/window/size
 func _ready():
 	set_process(true)
 
+func _process(delta):
+	
+	var sprite = get_node("pigeon_sprite")
+	var s = (1.7-global_position.y/2000.0)
+	sprite.set_scale(Vector2(s, s))
+	
+	
 func _physics_process(delta):
 	if globals.game_running:
 		if (Input.is_action_pressed("ui_left")):
@@ -46,20 +53,7 @@ func _physics_process(delta):
 		else:
 			kin_speed.x = lerp(kin_speed.x, 0 , .03)
 			kin_speed.y = lerp(kin_speed.y, 0 , .03)	
-		var collision = move_and_collide(kin_speed * delta)
-		
-		is_collistion(collision)
+		move_and_collide(kin_speed * delta)
 			
 	else:
 		pass
-		
-func is_collistion(object):
-	if object:
-		var collider = object.get_collider() as KinematicBody2D
-			
-		if collider.name == "poop":
-			globals.pigeon_life -= 1
-		if collider.name == "bread":
-			globals.score += 100
-			
-		collider.queue_free()

@@ -7,7 +7,7 @@ func _ready():
 	set_process(true)
 	
 func _process(delta):
-	if globals.game_running == false:
+	if globals.game_running == false and !globals.game_over:
 		if Input.is_action_pressed("ui_accept"):
 			globals.game_running = true
 			globals.score = 0
@@ -24,6 +24,7 @@ func _process(delta):
 		get_node("lives_label").set_text("LIVES: " + str(globals.pigeon_life))
 		
 		if Input.is_action_pressed("ui_cancel") or globals.pigeon_life < 0:
+			globals.game_over = true
 			globals.game_running = false
 			get_node("background_scene/ParallaxBackground/ParallaxLayer/background_sprite").visible = false
 			get_node("pigeon_scene/pigeon").visible = false
@@ -36,13 +37,16 @@ func _on_Timer_timeout():
 		create_poop()
 		create_bread()
 		globals.score += 10
+		globals.poop_speed += 50;
 	
 func create_poop():
 	var new_poop = poop.instance()
 	add_child(new_poop)     
 	new_poop.set_owner(self)
+	globals.objects.append(new_poop)
 	
 func create_bread():
 	var new_bread = bread.instance()
 	add_child(new_bread)     
 	new_bread.set_owner(self)
+	globals.objects.append(new_bread)

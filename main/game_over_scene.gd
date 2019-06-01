@@ -6,3 +6,7 @@ func _ready():
 
 func _process(delta):
 	get_node("final_score_label").set_text("YOUR SCORE: " + str(globals.score) )
+	if globals.game_over:
+		for k in globals.objects:
+			if k != null:
+				k.queue_free()
